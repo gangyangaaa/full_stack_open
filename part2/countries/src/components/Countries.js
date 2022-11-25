@@ -1,6 +1,6 @@
 import Country from './Country'
 
-const Countries = ({countries}) => {
+const Countries = ({countries, setCountries}) => {
   if (countries.length > 10) {
     return <div>Too many matches, specify another filter</div>
   } else if (countries.length === 1) {
@@ -10,7 +10,11 @@ const Countries = ({countries}) => {
     <ul>
       {countries
       .map(country => 
-      <li key = {country.name.official}>{country.name.common} </li>)}
+      <li key = {country.name.official}>
+        {country.name.common} 
+        <button onClick={() => setCountries([country])}>show</button>
+      </li>
+      )}
     </ul>
   )
 }
